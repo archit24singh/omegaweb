@@ -84,6 +84,44 @@
 			}
 		});
 	}
+/* Certifications Slider JS */
+if ($('.certification-slider').length) {
+    const certification_slider = new Swiper('.certification-slider', {
+        slidesPerView: 1,
+        speed: 5000,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 0, // No delay for continuous movement
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.certification-btn-next',
+            prevEl: '.certification-btn-prev',
+        },
+        breakpoints: {
+            576: {
+                slidesPerView: 2,
+            },
+            768: {
+                slidesPerView: 3,
+            },
+            992: {
+                slidesPerView: 4,
+            },
+            1200: {
+                slidesPerView: 5,
+            }
+        }
+    });
+}
+
+/* testimonial Slider JS */
+if ($('.testimonial-slider').length) {
+    const testimonial_slider = new Swiper('.testimonial-slider .swiper', {
+        // existing testimonial slider configuration
+    });
+}
 
 	/* Skill Bar */
 	if ($('.skills-progress-bar').length) {

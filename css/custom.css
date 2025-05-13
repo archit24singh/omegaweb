@@ -19,6 +19,10 @@
 /*** 	   02. General css		  ***/
 /************************************/
 
+.lowercase-email {
+    text-transform: lowercase !important;
+}
+
 body {
 	font-family: var(--default-font);
 	font-size: 16px;
@@ -198,6 +202,17 @@ body {
 	width: 60%;
 }
 
+.btn-white {
+    background: white !important;
+    color: black !important;
+    border: 2px solid #0B2452;
+}
+
+.btn-white:hover::after,
+.btn-white:hover::before {
+    background: #f5f5f5 !important;
+}
+
 .cb-cursor:before {
 	background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color-two) 100%);
 }
@@ -374,6 +389,156 @@ body {
 	font-weight: 500;
 }
 
+/* Service Tabs Styling */
+.services-tab-section {
+    position: relative;
+    z-index: 1;
+}
+
+.services-tab-section .nav-pills .nav-link {
+    color: #333;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.services-tab-section .nav-pills .nav-link.active {
+    color: white;
+    background-color: #0B2452;
+    border-color: #0B2452;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.services-tab-section .nav-pills .nav-link:hover:not(.active) {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.service-tab-content {
+    transition: all 0.3s ease;
+}
+
+.service-tab-img figure {
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.service-features li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.service-features li i {
+    color: #0B2452;
+}
+
+/* Tab hover and sliding animation effects */
+.service-tabs {
+    position: relative; /* Required for the indicator positioning */
+    width: 100%;
+}
+
+.service-tabs .nav-item {
+    flex: 1 1 0; /* Equal width items */
+    max-width: 16.6667%; /* 100% ÷ 6 tabs */
+    margin: 0;
+    position: relative; /* For hover effects */
+    z-index: 2;
+}
+
+.service-tabs .nav-link {
+    width: 100%;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 4px;
+    text-align: center;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    background-color: transparent; /* Important for the animation */
+    border: none;
+    color: #333; /* Default text color */
+}
+
+/* Hover effect */
+.service-tabs .nav-link:hover:not(.active) {
+    transform: translateY(-3px);
+    color: #0B2452; /* Slight color change on hover */
+    background-color: rgba(11, 36, 82, 0.05); /* Very light blue background */
+}
+
+/* Active tab styling */
+.service-tabs .nav-link.active {
+    background-color: transparent; /* Remove Bootstrap's background */
+    color: #0B2452; /* Active text color */
+    font-weight: 600; /* Make active tab bolder */
+}
+
+/* The sliding indicator */
+.tab-indicator {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    height: 3px; /* Indicator height */
+    background-color: #0B2452; /* Indicator color - dark blue */
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Mobile styles with the indicator */
+@media (max-width: 575px) {
+    .service-tabs .nav-link {
+        font-size: 11px;
+        padding: 5px 2px;
+        letter-spacing: -0.3px;
+    }
+    
+    .service-tabs .nav-link i {
+        font-size: 14px;
+        margin-bottom: 3px;
+    }
+    
+    .tab-indicator {
+        height: 2px; /* Thinner indicator on mobile */
+    }
+}
+/* Enhanced hover glow effect */
+.service-tabs .nav-link:hover:not(.active) {
+    transform: translateY(-3px);
+    color: #0B2452;
+    background-color: rgba(11, 36, 82, 0.05);
+    box-shadow: 0 5px 15px rgba(11, 36, 82, 0.1); /* Subtle glow */
+}
+
+/* Active tab with glow */
+.service-tabs .nav-link.active {
+    background-color: transparent;
+    color: #0B2452;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(11, 36, 82, 0.15); /* Subtle glow on active tab */
+}
+
+
+
+@media (max-width: 767px) {
+    .services-tab-section .nav-pills {
+        flex-wrap: wrap;
+    }
+    
+    .services-tab-section .nav-item {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .services-tab-section .nav-link {
+        width: 100%;
+        text-align: left;
+    }
+}
+
+
+
 /************************************/
 /**** 	   03. Header css		 ****/
 /************************************/
@@ -460,15 +625,58 @@ body {
 	color: inherit;
 }
 
-.topbar-social-icons ul li a i {
-	font-size: 16px;
-	color: var(--white-color);
-	transition: all 0.3s ease-in-out;
+.topbar-social-icons ul li a i,
+.social-icons-wrapper .social-icon i {
+    font-size: 16px;
+    color: var(--white-color);
+    transition: all 0.3s ease-in-out;
 }
 
 .topbar-social-icons ul li a:hover i {
-	color: var(--primary-color);
+    color: var(--primary-color);
 }
+
+/* Keep social icons in the social-icons-wrapper white on hover with a different effect */
+/* Keep social icons in the social-icons-wrapper white on hover with a different effect */
+.social-icons-wrapper .social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: all 0.3s ease-in-out;
+    position: relative; /* Add this */
+}
+
+/* Add this new hover effect with pseudo-element */
+/* Clean social icon hover effect without background circle */
+.social-icons-wrapper .social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.social-icons-wrapper .social-icon i {
+    font-size: 16px;
+    color: var(--white-color);
+    opacity: 0.85; /* Slightly dimmed by default */
+    transition: all 0.3s ease-in-out;
+}
+
+.social-icons-wrapper .social-icon:hover {
+    transform: translateY(-3px); /* Still keeps the upward movement */
+}
+
+.social-icons-wrapper .social-icon:hover i {
+    color: var(--white-color) !important; /* Force white color on hover */
+    opacity: 1; /* Full brightness on hover */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Optional: adds a subtle glow */
+}
+
 
 header.main-header {
 	position: relative;
@@ -716,6 +924,19 @@ header.main-header .header-sticky.active {
 	padding: 0;
 	background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color-two) 100%);
 }
+/* Mobile Navigation Scrolling Fix */
+.slicknav_nav {
+    max-height: 80vh; /* Limit height to 80% of viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    padding-bottom: 20px; /* Add padding at bottom for better visibility */
+}
+
+/* Make sure the menu has proper spacing for scrolling */
+.slicknav_menu {
+    max-height: 100vh;
+    overflow: hidden;
+}
 
 .slicknav_menu ul {
 	margin: 5px 0;
@@ -775,6 +996,177 @@ header.main-header .header-sticky.active {
 /************************************/
 /***        04. Hero css	      ***/
 /************************************/
+
+/* Hero banner styles */
+.career-hero-banner {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.career-hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 36, 82, 0.7);
+    backdrop-filter: blur(3px);
+}
+
+/* Certifications Slider Styles */
+.certifications-section {
+    overflow: hidden;
+    background-color: #f8f9fa;
+}
+
+.certification-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    height: 160px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certification-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.certification-item figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+}
+
+.certification-item img {
+    max-height: 120px;
+    max-width: 100%;
+    object-fit: contain;
+    filter: grayscale(0.2);
+    transition: filter 0.3s ease;
+}
+
+.certification-item:hover img {
+    filter: grayscale(0);
+}
+
+/* Privacy Policy Styles */
+.privacy-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.privacy-section {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.privacy-section h3 {
+    color: #0B2452;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.privacy-section h4 {
+    color: #0B2452;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.privacy-section ul li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.privacy-section a {
+    color: #0B2452;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.privacy-section a:hover {
+    color: #1e4b9c;
+    text-decoration: underline;
+}
+
+.contact-info {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 6px;
+    border-left: 4px solid #0B2452;
+}
+
+/* Terms & Conditions Styles */
+.terms-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.terms-section {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.terms-section h3 {
+    color: #0B2452;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.terms-section h4 {
+    color: #0B2452;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.terms-section ul li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.terms-section a {
+    color: #0B2452;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.terms-section a:hover {
+    color: #1e4b9c;
+    text-decoration: underline;
+}
+
+.contact-info {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 6px;
+    border-left: 4px solid #0B2452;
+}
+
+
+
 
 .hero {
 	position: relative;
@@ -2554,6 +2946,9 @@ header.main-header .header-sticky.active {
 	transform: rotate(0deg);
 }
 
+
+
+
 /************************************/
 /***      15. Latest News css     ***/
 /************************************/
@@ -2691,6 +3086,40 @@ header.main-header .header-sticky.active {
 	margin-bottom: 40px;
 }
 
+/* Add this to your CSS */
+.main-footer {
+    position: relative;
+    z-index: 1; /* Lower z-index than the navigation */
+}
+
+.main-header {
+    position: relative;
+    z-index: 100; /* Higher z-index than the footer */
+}
+
+/* Fix for the company card in footer */
+.drop-container {
+    position: absolute;
+    width: 300px;
+    left: 15px;
+    top: -60px; /* Position above the footer */
+    z-index: 10;
+}
+.company-card {
+    border-radius: 16px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+
+@media (max-width: 992px) {
+    .drop-container {
+        position: static;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto 40px auto;
+    }
+}
+
 .about-footer {
 	width: 100%;
 	max-width: 300px;
@@ -2808,6 +3237,63 @@ header.main-header .header-sticky.active {
 	max-width: 20px;
 	z-index: 1;
 }
+/* Mobile view fixes */
+@media (max-width: 992px) {
+    .main-footer {
+        padding-top: 30px !important; /* Standard padding */
+    }
+    
+    .drop-container {
+        position: static; /* Change to static positioning */
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin: 0 auto 40px auto; /* Centered with margin bottom */
+        top: auto;
+        left: auto;
+        transform: none;
+    }
+    
+    .company-card {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    /* Reorder footer sections */
+    .main-footer .container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .main-footer .drop-container {
+        order: 1; /* First item */
+    }
+    
+    .main-footer .footer-content {
+        order: 2; /* Second item */
+        min-height: 0;
+        margin-top: 0;
+    }
+    
+    .main-footer hr {
+        order: 3; /* Third item */
+    }
+    
+    .main-footer .footer-copyright {
+        order: 4; /* Fourth item */
+    }
+    
+    .offset-lg-4 {
+        margin-left: 0;
+    }
+}
+
+.main-footer.bg-section {
+    background-color: #101e2b !important;
+}
+
+
+
 
 /* Add this CSS to your stylesheet or in a style tag in the head section */
 .process-steps {
@@ -4842,6 +5328,53 @@ header.main-header .header-sticky.active {
 	margin: 0;
 }
 
+/* Fix for application process numbers on mobile view */
+@media (max-width: 767px) {
+    /* Adjust the application process container */
+    .application-process-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    /* Fix the blue line position */
+    .application-process-timeline {
+        left: 20px; /* Move the blue line to the left */
+    }
+    
+    /* Adjust the number circles positioning */
+    .application-process-step .step-number {
+        left: 20px; /* Align with the blue line */
+        transform: translateX(-50%); /* Center the circle on the line */
+    }
+    
+    /* Adjust the content padding to give more space */
+    .application-process-step .step-content {
+        padding-left: 40px; /* Increase padding to accommodate the number circle */
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 575px) {
+    /* Further adjustments for very small screens */
+    .application-process-timeline {
+        left: 15px;
+    }
+    
+    .application-process-step .step-number {
+        left: 15px;
+        width: 30px; /* Make the circles slightly smaller */
+        height: 30px;
+        font-size: 14px;
+        line-height: 30px;
+    }
+    
+    .application-process-step .step-content {
+        padding-left: 35px;
+    }
+}
+
+
+
 /************************************/
 /***    31. 404 Error Page css    ***/
 /************************************/
@@ -4929,6 +5462,11 @@ header.main-header .header-sticky.active {
 	.topbar-contact-info.topbar-contact-details {
 		display: none;
 	}
+
+
+
+
+	
 
 	.navbar-brand img {
 		max-width: 160px;
